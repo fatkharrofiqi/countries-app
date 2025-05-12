@@ -21,10 +21,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" id="root">
       <body
-        className={`${nunito.variable} antialiased min-h-screen bg-white dark:bg-[#202D36] dark:text-white`}
+        className={`${nunito.variable} antialiased min-h-screen bg-background dark:bg-foreground dark:text-white relative`}
       >
         <Header />
-        <main className="py-6 px-4">{children}</main>
+        <main className="py-6 px-4 md:py-12 md:px-20">{children}</main>
       </body>
     </html>
   );

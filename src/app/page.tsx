@@ -1,5 +1,5 @@
-import Page from "@/components/page";
+import CountriesPage from "@/components/page/countries";
 
 export default function Home() {
-  return <Page />;
+  return <CountriesPage />;
 }
