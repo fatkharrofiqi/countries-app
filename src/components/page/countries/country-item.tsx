@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 interface CardItemProp {
@@ -15,11 +16,15 @@ export default function CountryItem(country: CardItemProp) {
       href={`/countries/${country.alpha3code}`}
       className="rounded-lg bg-white hover:bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 shadow-sm"
     >
-      <img
-        src={country.flag}
-        alt="cdn"
-        className="rounded-t-lg w-full h-[10rem] object-cover "
-      />
+      <div className="relative w-full h-[10rem]">
+        <Image
+          src={country.flag}
+          alt="cdn"
+          fill
+          priority
+          className="rounded-t-lg object-cover "
+        />
+      </div>
       <div className="pt-7 pb-9 px-6">
         <p className="font-bold tracking-wider pb-4">{country.name}</p>
         <div className="space-y-2   ">
