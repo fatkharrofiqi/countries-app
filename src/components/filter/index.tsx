@@ -6,7 +6,7 @@ import ListItem from "./list-item";
 
 export default function FilterByRegion() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selected, setSelected] = useState<string>("");
+  const [selected, setSelected] = useState<string>();
   const state = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -42,7 +42,7 @@ export default function FilterByRegion() {
         )}
       >
         <p className="text-[0.75rem] md:text-[0.8125rem] md:tracking-tight text-gray-500 dark:text-white">
-          Filter by Region
+          {selected ?? "Filter by Region"}
         </p>
         <ChevronDown
           size={12}
@@ -54,14 +54,22 @@ export default function FilterByRegion() {
       </div>
       <ul
         className={twMerge(
-          "absolute top-16.5 left-0 px-2 py-2 w-full md:text-[0.8125rem] md:tracking-tight bg-white dark:bg-gray-700 rounded-lg shadow-sm text-[0.75rem] duration-300 transition-all ease-out z-10",
+          "absolute top-16.5 left-0 px-2 py-2 w-full md:text-[0.8125rem] md:tracking-tight bg-white dark:bg-gray-700 rounded-lg shadow-sm text-[0.75rem] duration-300 transition-all ease-out z-2",
           isOpen
             ? "translate-y-0 opacity-100 pointer-events-auto"
             : "-translate-y-4 opacity-0 pointer-events-none",
         )}
       >
         {state.map((val) => (
-          <ListItem key={val}>{val}</ListItem>
+          <ListItem
+            key={val}
+            click={() => {
+              setSelected(val);
+              setIsOpen(false);
+            }}
+          >
+            {val}
+          </ListItem>
         ))}
       </ul>
     </div>

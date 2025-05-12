@@ -1,6 +1,6 @@
 interface TextProp {
   label: string;
-  subLabel: string;
+  subLabel?: string;
 }
 
 export default function Text({ label, subLabel }: TextProp) {
